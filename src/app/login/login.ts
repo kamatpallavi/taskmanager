@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,12 +11,12 @@ import { RouterLink } from '@angular/router';
 })
 export class Login {
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,private router: Router) { }
 
   email = '';
   password = '';
 
-  login()
+  /*login()
   {
     console.log(this.email);
     console.log(this.password);
@@ -39,6 +39,35 @@ export class Login {
       }
     });
 
-  }
+  }*/
+ login()
+{
+    console.log(this.email);
+    console.log(this.password);
+
+    const user =
+    {
+        email: this.email,
+        password: this.password
+    };
+
+    this.authService.login(user).subscribe({
+
+        next: (response: any) =>
+        {
+            alert(response.message);
+
+            localStorage.setItem('userId', response.userId);
+            this.router.navigate(['/add-task']);
+        },
+
+        error: (error) =>
+        {
+            alert(error.error);
+        }
+
+    });
+
+}
 
 }

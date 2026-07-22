@@ -23,9 +23,12 @@ export class AuthService {
 {
     return this.http.post(
         "https://localhost:7144/api/Auth/login",
-        user,
-        { responseType: 'text' }
+        user
+        /*{ responseType: 'text' } */
     );
 }
+
+
+
 
 }
