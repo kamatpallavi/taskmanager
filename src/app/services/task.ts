@@ -17,4 +17,17 @@ export class TaskService {
 );
 }
 
+
+
+ viewTask()
+{
+    return this.http.get("https://localhost:7144/api/Task/view");
+}
+
+
+ deleteTask(taskId: number)
+{
+    return this.http.delete(`https://localhost:7144/api/Task/delete/${taskId}`);
+}
+
 }

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TaskService } from '../services/task';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-add-task',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './add-task.html',
   styleUrl: './add-task.css',
 })
